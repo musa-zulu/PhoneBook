@@ -74,7 +74,8 @@ namespace PhoneBook.Infrastructure.Extension
 
         public static void AddController(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddControllers().AddNewtonsoftJson();
+            serviceCollection.AddControllers()                
+            .AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
 
         public static void AddVersion(this IServiceCollection serviceCollection)

@@ -43,6 +43,7 @@ namespace PhoneBook.Service.Implementation
         {
             return await _dataContext.PhoneBooks
                .Include(x => x.Entries)
+               .AsNoTracking()
                .ToListAsync() ?? new List<Domain.Entities.PhoneBook>();
         }
 

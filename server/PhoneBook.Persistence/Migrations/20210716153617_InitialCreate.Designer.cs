@@ -10,7 +10,7 @@ using PhoneBook.Persistence;
 namespace PhoneBook.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210716140935_InitialCreate")]
+    [Migration("20210716153617_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
