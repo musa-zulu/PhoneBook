@@ -73,8 +73,6 @@ This phone book api contains following features.
 - [x] Entityframework Core
 - [x] Expection handling
 - [x] Automapper
-- [x] Unit testing via NUnit & Nsubstitute for mocking
-- [x] Integration testing via NUnit
 - [x] Versioning
 - [x] Swagger
 - [x] CQRS Pattern 
