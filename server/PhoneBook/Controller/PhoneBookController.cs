@@ -36,5 +36,11 @@ namespace PhoneBook.Controller
         {
             return Ok(await Mediator.Send(new GetAllPhoneBooksQuery()));
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            return Ok(await Mediator.Send(new GetPhoneBookByIdQuery { PhoneBookId = id }));
+        }
     }
 }
