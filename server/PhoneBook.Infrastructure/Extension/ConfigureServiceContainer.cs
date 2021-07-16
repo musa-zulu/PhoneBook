@@ -37,7 +37,7 @@ namespace PhoneBook.Infrastructure.Extension
         public static void AddAddScopedServices(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
-            serviceCollection.AddScoped<IContactService, ContactService>();
+            serviceCollection.AddScoped<IEntryService, EntryService>();
         }
 
         public static void AddSwaggerOpenAPI(this IServiceCollection serviceCollection)

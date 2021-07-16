@@ -9,4 +9,9 @@
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PhoneBook.Domain\PhoneBook.Domain.csproj" />
+    <ProjectReference Include="..\PhoneBook.Persistence\PhoneBook.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>
