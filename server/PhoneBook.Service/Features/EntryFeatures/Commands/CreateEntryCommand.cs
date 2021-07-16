@@ -25,6 +25,7 @@ namespace PhoneBook.Service.Features.EntryFeatures.Commands
             public async Task<bool> Handle(CreateEntryCommand request, CancellationToken cancellationToken)
             {
                 var entry = _mapper.Map<Entry>(request.EntryDto);
+                entry.EntryId = Guid.NewGuid();
                 var entrySaved = false;
                 if (entry != null)
                 {

@@ -27,6 +27,7 @@ namespace PhoneBook.Service.Features.PhoneBookFeatures.Commands
             public async Task<bool> Handle(CreatePhoneBookCommand request, CancellationToken cancellationToken)
             {
                 var phoneBook = _mapper.Map<PhoneBookPoco>(request.PhoneBookDto);
+                phoneBook.PhoneBookId = Guid.NewGuid();
                 phoneBook.Entries = new List<Entry>();
                 var isSaved = false;
                 if (phoneBook != null)

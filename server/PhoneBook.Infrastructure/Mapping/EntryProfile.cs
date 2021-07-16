@@ -9,7 +9,8 @@ namespace PhoneBook.Infrastructure.Mapping
         public EntryProfile()
         {
             CreateMap<EntryDto, Entry>()
-                .ReverseMap();
+                .ForMember(dest => dest.PhoneBook, opt =>
+                    opt.Ignore());                         
         }
     }
 }
