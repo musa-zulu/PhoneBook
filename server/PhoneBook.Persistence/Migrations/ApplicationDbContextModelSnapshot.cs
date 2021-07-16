@@ -55,7 +55,7 @@ namespace PhoneBook.Persistence.Migrations
 
             modelBuilder.Entity("PhoneBook.Domain.Entities.PhoneBook", b =>
                 {
-                    b.Property<Guid>("PhoneBookDtoId")
+                    b.Property<Guid>("PhoneBookId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -74,9 +74,9 @@ namespace PhoneBook.Persistence.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("PhoneBookDtoId");
+                    b.HasKey("PhoneBookId");
 
-                    b.ToTable("PhoneBook");
+                    b.ToTable("PhoneBooks");
                 });
 
             modelBuilder.Entity("PhoneBook.Domain.Entities.Entry", b =>

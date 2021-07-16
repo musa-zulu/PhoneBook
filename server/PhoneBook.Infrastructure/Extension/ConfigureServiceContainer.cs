@@ -29,6 +29,7 @@ namespace PhoneBook.Infrastructure.Extension
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new EntryProfile());
+                mc.AddProfile(new PhoneBookProfile());
             });
             IMapper mapper = mappingConfig.CreateMapper();
             serviceCollection.AddSingleton(mapper);
@@ -38,6 +39,7 @@ namespace PhoneBook.Infrastructure.Extension
         {
             serviceCollection.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
             serviceCollection.AddScoped<IEntryService, EntryService>();
+            serviceCollection.AddScoped<IPhoneBookService, PhoneBookService>();
         }
 
         public static void AddSwaggerOpenAPI(this IServiceCollection serviceCollection)

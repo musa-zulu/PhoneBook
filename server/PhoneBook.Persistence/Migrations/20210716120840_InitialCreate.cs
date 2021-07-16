@@ -8,10 +8,10 @@ namespace PhoneBook.Persistence.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "PhoneBook",
+                name: "PhoneBooks",
                 columns: table => new
                 {
-                    PhoneBookDtoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PhoneBookId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -20,7 +20,7 @@ namespace PhoneBook.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PhoneBook", x => x.PhoneBookDtoId);
+                    table.PrimaryKey("PK_PhoneBooks", x => x.PhoneBookId);
                 });
 
             migrationBuilder.CreateTable(
@@ -40,10 +40,10 @@ namespace PhoneBook.Persistence.Migrations
                 {
                     table.PrimaryKey("PK_Entries", x => x.EntryId);
                     table.ForeignKey(
-                        name: "FK_Entries_PhoneBook_PhoneBookId",
+                        name: "FK_Entries_PhoneBooks_PhoneBookId",
                         column: x => x.PhoneBookId,
-                        principalTable: "PhoneBook",
-                        principalColumn: "PhoneBookDtoId",
+                        principalTable: "PhoneBooks",
+                        principalColumn: "PhoneBookId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -59,7 +59,7 @@ namespace PhoneBook.Persistence.Migrations
                 name: "Entries");
 
             migrationBuilder.DropTable(
-                name: "PhoneBook");
+                name: "PhoneBooks");
         }
     }
 }
