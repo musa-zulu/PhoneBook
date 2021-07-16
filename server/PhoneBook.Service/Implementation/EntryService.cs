@@ -1,4 +1,5 @@
-﻿using PhoneBook.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using PhoneBook.Domain.Entities;
 using PhoneBook.Persistence;
 using PhoneBook.Service.Contract;
 using System;
@@ -10,30 +11,47 @@ namespace PhoneBook.Service.Implementation
     public class EntryService : IEntryService
     {
         private readonly IApplicationDbContext _dataContext;
-
-        public Task<bool> CreateEntryAsync(Entry entry)
+        public EntryService(IApplicationDbContext dataContext)
         {
-            throw new NotImplementedException();
+            _dataContext = dataContext ?? throw new ArgumentNullException(nameof(dataContext));
         }
 
-        public Task<bool> DeleteEntryAsync(Guid entryId)
+        public async Task<bool> CreateEntryAsync(Entry entry)
         {
-            throw new NotImplementedException();
+            _dataContext.Entries.Add(entry);
+            return await _dataContext.SaveChangesAsync() > 0;
         }
 
-        public Task<List<Entry>> GetEntriesAsync()
+        public async Task<bool> DeleteEntryAsync(Guid entryId)
         {
-            throw new NotImplementedException();
+            var entry = await GetEntryByIdAsync(entryId);
+
+            if (entry == null)
+                return false;
+
+            _dataContext.Entries.Remove(entry);
+            return await _dataContext.SaveChangesAsync() > 0;
         }
 
-        public Task<Entry> GetEntryByIdAsync(Guid entryId)
+        public async Task<List<Entry>> GetEntriesAsync()
         {
-            throw new NotImplementedException();
+            return await _dataContext.Entries
+               .Include(x => x.PhoneBook)
+               .ToListAsync() ?? new List<Entry>();
         }
 
-        public Task<bool> UpdateEntryAsync(Entry entryToUpdate)
+        public async Task<Entry> GetEntryByIdAsync(Guid entryId)
         {
-            throw new NotImplementedException();
+            return await _dataContext.Entries
+               .Include(c => c.PhoneBook)
+               .AsNoTracking()
+               .SingleOrDefaultAsync(x => x.EntryId == entryId);
+        }
+
+        public async Task<bool> UpdateEntryAsync(Entry entryToUpdate)
+        {
+            _dataContext.Entries.Update(entryToUpdate);
+            return await _dataContext.SaveChangesAsync() > 0;
         }
     }
 }
