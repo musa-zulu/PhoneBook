@@ -1,6 +1,5 @@
 
-server/.vs/BookStore/v16/Server/sqlite3/db.lock
-server/*/bin/
+server/.vs/PhoneBook/v16/Server/sqlite3/db.lock
 server/*/obj/
 server/packages/
 *.suo
@@ -42,3 +41,11 @@ client/.eslintcache
 server/.vs/PhoneBook/config/
 
 server/.vs/
+
+*.json
+
+*.dll
+
+*.pdb
+
+*.exe
