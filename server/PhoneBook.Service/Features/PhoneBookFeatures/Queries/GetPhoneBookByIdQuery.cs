@@ -9,10 +9,10 @@ namespace PhoneBook.Service.Features.PhoneBookFeatures.Queries
     public class GetPhoneBookByIdQuery : IRequest<Domain.Entities.PhoneBook>
     {
         public Guid PhoneBookId { get; set; }
-        public class GetFinderByIdQueryHandler : IRequestHandler<GetPhoneBookByIdQuery, Domain.Entities.PhoneBook>
+        public class GetPhoneBookByIdHandler : IRequestHandler<GetPhoneBookByIdQuery, Domain.Entities.PhoneBook>
         {            
             private readonly IPhoneBookService _phoneBookService;
-            public GetFinderByIdQueryHandler(IPhoneBookService phoneBookService)
+            public GetPhoneBookByIdHandler(IPhoneBookService phoneBookService)
             {
                 _phoneBookService = phoneBookService;
             }

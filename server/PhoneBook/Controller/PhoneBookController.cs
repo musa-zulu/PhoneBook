@@ -42,5 +42,21 @@ namespace PhoneBook.Controller
         {
             return Ok(await Mediator.Send(new GetPhoneBookByIdQuery { PhoneBookId = id }));
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            return Ok(await Mediator.Send(new DeletePhoneBookByIdCommand { PhoneBookId = id }));
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(UpdatePhoneBookCommand command)
+        {
+            if (command.PhoneBookDto.PhoneBookId == Guid.Empty)
+            {
+                return BadRequest();
+            }
+            return Ok(await Mediator.Send(command));
+        }
     }
 }
