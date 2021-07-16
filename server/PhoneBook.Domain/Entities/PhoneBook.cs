@@ -8,6 +8,7 @@ namespace PhoneBook.Domain.Entities
     {
         [Key]
         public Guid PhoneBookId { get; set; }
+        [Required]
         public string Name { get; set; }
         public virtual List<Entry> Entries { get; set; }
     }

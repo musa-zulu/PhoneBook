@@ -38,12 +38,14 @@ namespace PhoneBook.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("PhoneBookId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("EntryId");
@@ -72,6 +74,7 @@ namespace PhoneBook.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PhoneBookId");

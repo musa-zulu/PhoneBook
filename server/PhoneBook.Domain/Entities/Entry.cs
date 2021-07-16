@@ -7,7 +7,9 @@ namespace PhoneBook.Domain.Entities
     {
         [Key]
         public Guid EntryId { get; set; }
-        public string Name { get; set; }        
+        [Required]
+        public string Name { get; set; }
+        [Required]
         public string PhoneNumber { get; set; }
 
         public Guid PhoneBookId { get; set; }

@@ -10,7 +10,7 @@ using PhoneBook.Persistence;
 namespace PhoneBook.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210716120840_InitialCreate")]
+    [Migration("20210716140935_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,12 +40,14 @@ namespace PhoneBook.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("PhoneBookId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("EntryId");
@@ -74,6 +76,7 @@ namespace PhoneBook.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PhoneBookId");
