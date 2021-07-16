@@ -4,11 +4,11 @@ using PhoneBook.Domain.Entities;
 
 namespace PhoneBook.Infrastructure.Mapping
 {
-    public class ContactProfile : Profile
+    public class EntryProfile : Profile
     {
-        public ContactProfile()
+        public EntryProfile()
         {
-            CreateMap<ContactDto, Contact>()
+            CreateMap<EntryDto, Entry>()
                 .ReverseMap();
         }
     }

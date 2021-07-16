@@ -14,7 +14,7 @@ namespace PhoneBook.Persistence
             ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
-        public DbSet<Contact> Contacts { get; set; }     
+        public DbSet<Entry> Entries { get; set; }     
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {         

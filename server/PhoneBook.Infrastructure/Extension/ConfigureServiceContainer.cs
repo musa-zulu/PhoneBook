@@ -28,7 +28,7 @@ namespace PhoneBook.Infrastructure.Extension
         {
             var mappingConfig = new MapperConfiguration(mc =>
             {
-                mc.AddProfile(new ContactProfile());
+                mc.AddProfile(new EntryProfile());
             });
             IMapper mapper = mappingConfig.CreateMapper();
             serviceCollection.AddSingleton(mapper);

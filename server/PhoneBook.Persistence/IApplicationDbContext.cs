@@ -6,7 +6,7 @@ namespace PhoneBook.Persistence
 {
     public interface IApplicationDbContext
     {
-        DbSet<Contact> Contacts { get; set; }        
+        DbSet<Entry> Entries { get; set; }        
         Task<int> SaveChangesAsync();
     }
 }
