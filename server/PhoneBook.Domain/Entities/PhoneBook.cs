@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace PhoneBook.Domain.Entities
 {
-    public class PhoneBook : BaseEntity
+    public class PhoneBook
     {
         [Key]
         public Guid PhoneBookId { get; set; }

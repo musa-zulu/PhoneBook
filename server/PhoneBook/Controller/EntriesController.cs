@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using PhoneBook.Domain.Dtos;
 using PhoneBook.Service.Features.EntryFeatures.Commands;
 using PhoneBook.Service.Features.EntryFeatures.Queries;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace PhoneBook.Controller
 {
     [ApiController]
-    [Route("api/v{version:apiVersion}/Entries")]
+    [Route("api/v{version:apiVersion}/entries")]
     [ApiVersion("1.0")]
     public class EntriesController : ControllerBase
     {
@@ -25,8 +26,12 @@ namespace PhoneBook.Controller
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CreateEntryCommand command)
+        public async Task<IActionResult> Create([FromBody] EntryDto entryDto)
         {
+            CreateEntryCommand command = new()
+            {
+                EntryDto = entryDto
+            };
             return Ok(await Mediator.Send(command));
         }
 
@@ -44,8 +49,12 @@ namespace PhoneBook.Controller
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(UpdateEntryCommand command)
+        public async Task<IActionResult> Update([FromBody] EntryDto entryDto)
         {
+            UpdateEntryCommand command = new()
+            {
+                EntryDto = entryDto
+            };
             if (command.EntryDto.EntryId == Guid.Empty)
             {
                 return BadRequest();

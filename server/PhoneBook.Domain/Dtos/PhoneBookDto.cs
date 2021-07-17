@@ -2,7 +2,7 @@
 
 namespace PhoneBook.Domain.Dtos
 {
-    public class PhoneBookDto : BaseEntity
+    public class PhoneBookDto
     {   
         public Guid PhoneBookId { get; set; }
         public string Name { get; set; }        

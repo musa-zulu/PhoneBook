@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PhoneBook.Domain.Entities
 {
-    public class Entry : BaseEntity
+    public class Entry
     {
         [Key]
         public Guid EntryId { get; set; }

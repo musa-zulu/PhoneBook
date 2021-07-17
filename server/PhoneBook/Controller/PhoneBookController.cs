@@ -5,11 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using PhoneBook.Service.Features.PhoneBookFeatures.Commands;
 using PhoneBook.Service.Features.PhoneBookFeatures.Queries;
+using PhoneBook.Domain.Dtos;
 
 namespace PhoneBook.Controller
 {
     [ApiController]
-    [Route("api/v{version:apiVersion}/PhoneBooks")]
+    [Route("api/v{version:apiVersion}/phoneBooks")]
     [ApiVersion("1.0")]
     public class PhoneBookController : ControllerBase
     {
@@ -25,8 +26,12 @@ namespace PhoneBook.Controller
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CreatePhoneBookCommand command)
+        public async Task<IActionResult> Create([FromBody] PhoneBookDto phoneBookDto)
         {
+            CreatePhoneBookCommand command = new()
+            {
+                PhoneBookDto = phoneBookDto
+            };
             return Ok(await Mediator.Send(command));
         }
 
@@ -50,8 +55,12 @@ namespace PhoneBook.Controller
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(UpdatePhoneBookCommand command)
+        public async Task<IActionResult> Update([FromBody] PhoneBookDto phoneBookDto)
         {
+            UpdatePhoneBookCommand command = new()
+            {
+                PhoneBookDto = phoneBookDto
+            };
             if (command.PhoneBookDto.PhoneBookId == Guid.Empty)
             {
                 return BadRequest();

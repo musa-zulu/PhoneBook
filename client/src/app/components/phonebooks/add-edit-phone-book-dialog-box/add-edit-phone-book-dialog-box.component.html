@@ -1,0 +1,21 @@
+<h1 mat-dialog-title><strong>{{action}}</strong></h1>
+<div mat-dialog-content>
+    <div class="form-group">
+        <mat-form-field *ngIf="action !== 'Delete'; else elseTemplate">
+            <input #name="ngModel" placeholder="Phone Book Name" matInput [(ngModel)]="localData.name" name="name"
+                id="name" type="text" class="form-control" required appearance="fill">
+            <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+                Name is required
+            </div>
+        </mat-form-field>
+    </div>
+    <ng-template #elseTemplate>
+        Are you sure you want to delete the following phone book? <br><br>
+        <b>{{localData.name}}</b>
+        <br>
+    </ng-template>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="doAction()" mat-flat-button color="primary">Save</button>
+    <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+</div>
